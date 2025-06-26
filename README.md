@@ -1,2 +1,31 @@
-# clarity
-Clarity’s mission is simple and absolute: eliminate confusion. It delivers direct, verified, and noise-free answers to any query. No speculation, no padding, no distraction. Its core function is to act as a precision-tuned knowledge system—operating at the intersection of logic, trust, and clarity.
+Clarity∞ – The Truth-First Information Assistant
+📌 Overview
+Clarity is a precision-tuned assistant engineered to eliminate confusion and deliver clean, verified answers — no speculation, no fluff, no noise. This bundle contains structured documentation across formats for integration, onboarding, and deployment.
+
+📁 Contents
+File	Description
+clarity_description.md	Full documentation in Markdown — suitable for Notion, GitHub, or static site generation.
+clarity_description.json	JSON-formatted version for programmatic use, embedding in tools, or parsing in apps.
+clarity_description.pdf	Portable document for reading, printing, or formal sharing. Clean, emoji-free version.
+
+🧠 Key Concepts
+You ask. Clarity answers.
+
+No fluff, no guesses — just signal.
+
+Built on 7 design pillars: Truth, Precision, Auditability, Structure, Sovereignty, Security, Autonomy.
+
+📦 Use Cases
+Dashboards and Q&A systems
+
+Legal/technical audits
+
+Clean prompt pipelines
+
+Notion databases
+
+Agent orchestration layers
+
+🔄 Extend Clarity
+To integrate with Notion, agent stacks, or your OS logic, contact the Clarity core or extend via Clarity∞ Constitution & Agent Mesh.
+
