@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clarity Bitcoin Mining Control</title>
+<style>
+body{font-family:system-ui,-apple-system,sans-serif;background:#0b1020;color:#eef2ff;margin:0}
+main{max-width:980px;margin:auto;padding:28px}
+.card{background:#131a2e;border:1px solid #2a3557;border-radius:14px;padding:18px;margin:14px 0}
+h1,h2{margin:.2em 0}.hold{color:#fbbf24}.ok{color:#34d399}
+code{background:#080c18;padding:2px 6px;border-radius:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.small{color:#aab3cc;font-size:.92rem}
+a{color:#93c5fd}
+</style>
+</head>
+<body>
+<main>
+<h1>Bitcoin Mining Control</h1>
+<p class="small">GitHub control plane for a real external Bitcoin miner. GitHub is not the proof-of-work device.</p>
+
+<div class="grid">
+  <div class="card"><h2>Controller</h2><p class="ok">READY</p></div>
+  <div class="card"><h2>External Miner</h2><p class="hold">NOT CONNECTED</p></div>
+  <div class="card"><h2>Network Proof</h2><p class="hold">HOLD</p></div>
+  <div class="card"><h2>TCGE</h2><p class="hold">HOLD</p></div>
+</div>
+
+<div class="card">
+<h2>Release chain</h2>
+<p>ASIC / miner → pool or Bitcoin node → receipt → independent Echo → TCGE → K or HOLD</p>
+</div>
+
+<div class="card">
+<h2>What counts as success</h2>
+<p>This app never treats process output, a local hash, or a GitHub workflow as proof that Bitcoin was mined. A block claim requires a real Bitcoin block hash and independent network lookup.</p>
+</div>
+
+<div class="card">
+<h2>Run locally with real hardware</h2>
+<p>Set <code>BTC_MINER_COMMAND</code> on the machine connected to your miner, then run <code>python3 bitcoin-miner/controller.py</code>.</p>
+<p>After a real block candidate is accepted, verify it with <code>python3 bitcoin-miner/verify_receipt.py --block-hash &lt;64-hex-block-hash&gt;</code>.</p>
+</div>
+
+<div class="card">
+<h2>Status</h2>
+<p id="status">Loading…</p>
+</div>
+
+<p><a href="../index.html">Back to Clarity</a></p>
+</main>
+<script>
+fetch("status.json",{cache:"no-store"}).then(r=>r.json()).then(s=>{
+ document.getElementById("status").textContent =
+  "State: "+s.state+" | BTC mined by verified evidence: "+s.verified_btc+" | Reason: "+s.reason;
+}).catch(()=>{document.getElementById("status").textContent="HOLD: status record unavailable";});
+</script>
+</body>
+</html>
