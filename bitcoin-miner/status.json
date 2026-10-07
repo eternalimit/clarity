@@ -1,0 +1,9 @@
+{
+  "state": "HOLD",
+  "verified_btc": 0,
+  "controller": "READY",
+  "external_miner": "NOT_CONNECTED",
+  "network_proof": "MISSING",
+  "echo": "MISSING",
+  "reason": "No real external miner receipt or independently verified Bitcoin block evidence has been supplied."
+}
