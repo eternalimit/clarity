@@ -1,0 +1,44 @@
+name: Bitcoin Miner Control Check
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "bitcoin-miner/**"
+      - ".github/workflows/bitcoin-miner-control.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  control-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Syntax check
+        run: |
+          python -m py_compile bitcoin-miner/controller.py
+          python -m py_compile bitcoin-miner/verify_receipt.py
+      - name: Verify fail-closed behavior
+        run: |
+          set +e
+          output=$(python bitcoin-miner/controller.py 2>&1)
+          code=$?
+          set -e
+          echo "$output"
+          test "$code" -ne 0
+          echo "$output" | grep -q "HOLD:"
+      - name: Verify status is not a false mining claim
+        run: |
+          python - <<'PY'
+          import json
+          with open("bitcoin-miner/status.json", encoding="utf-8") as f:
+              s=json.load(f)
+          assert s["state"] == "HOLD"
+          assert s["verified_btc"] == 0
+          assert s["network_proof"] == "MISSING"
+          print("PASS: repository stays HOLD without external proof")
+          PY
