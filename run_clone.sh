@@ -8,7 +8,7 @@ python3 -m py_compile bitcoin-miner/mock_asic.py
 python3 -m py_compile bitcoin-miner/controller.py
 python3 -m py_compile bitcoin-miner/check_evidence.py
 
-export BTC_MINER_COMMAND="python3 bitcoin-miner/mock_asic.py"
+export BTC_MINER_COMMAND="python3 mock_asic.py"
 
 echo "Anchoin Miner software clone"
 echo "SIMULATION ONLY: no real ASIC, pool submission, or Bitcoin reward."
