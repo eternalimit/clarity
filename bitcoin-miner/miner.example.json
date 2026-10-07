@@ -1,0 +1,7 @@
+{
+  "mode": "external-miner",
+  "network": "mainnet",
+  "evidence_dir": "evidence",
+  "require_echo": true,
+  "notes": "Miner command and secrets are supplied only through environment variables."
+}
