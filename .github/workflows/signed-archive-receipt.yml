@@ -1,0 +1,32 @@
+name: Signed archive receipt verification
+on:
+  workflow_dispatch:
+  push:
+    branches: [main.pub]
+    paths:
+      - 'archive/receipts/**'
+      - 'research/public-priority/**'
+      - '.github/workflows/signed-archive-receipt.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify bound receipt and signing state (fail closed)
+        shell: bash
+        run: |
+          set -euo pipefail
+          original=4ea64c8bb41608582fbc88f412763791b4cdcbdd
+          archived=bc3ba0a9bed8da4c3190e9cec9156674c105847e
+          git cat-file -e "$original^{commit}"
+          git cat-file -e "$archived^{commit}"
+          grep -Fq "$original" archive/receipts/CLARITY_INFOFAQS_PRIORITY_RECEIPT_2026-10-08.md
+          echo "GET=PASS ARCHIVE=PASS BIND=PASS"
+          echo "SIGN=HOLD: signing must occur in an authorized signer; no key is present in this workflow"
+          echo "ECHO=HOLD until a signed attestation commit is verified"
+          exit 1
