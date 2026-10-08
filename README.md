@@ -1,31 +1,30 @@
-Clarity∞ – The Truth-First Information Assistant
-📌 Overview
-Clarity is a precision-tuned assistant engineered to eliminate confusion and deliver clean, verified answers — no speculation, no fluff, no noise. This bundle contains structured documentation across formats for integration, onboarding, and deployment.
+# Clarity∞ – The Truth-First Information Assistant
 
-📁 Contents
-File	Description
-clarity_description.md	Full documentation in Markdown — suitable for Notion, GitHub, or static site generation.
-clarity_description.json	JSON-formatted version for programmatic use, embedding in tools, or parsing in apps.
-clarity_description.pdf	Portable document for reading, printing, or formal sharing. Clean, emoji-free version.
+## Start Here
 
-🧠 Key Concepts
-You ask. Clarity answers.
+**Repository root:** [REIK_ROOT.md](REIK_ROOT.md)
 
-No fluff, no guesses — just signal.
+Every project starts from REIK_ROOT.md, then loads only its own project-specific context. Use [PROJECT_START.md](PROJECT_START.md) as the lightweight bootstrap template.
 
-Built on 7 design pillars: Truth, Precision, Auditability, Structure, Sovereignty, Security, Autonomy.
+This keeps the canonical governance rule at the root instead of duplicating a growing prompt across every project.
 
-📦 Use Cases
-Dashboards and Q&A systems
+## Canonical Gate
 
-Legal/technical audits
+R = Reality / direct evidence  
+I = Inference / interpretation  
+E = Echo / independent validation  
+K = Knowledge
 
-Clean prompt pipelines
+K = R AND I AND E
 
-Notion databases
+If required evidence is unresolved: HOLD.
 
-Agent orchestration layers
+## Overview
 
-🔄 Extend Clarity
-To integrate with Notion, agent stacks, or your OS logic, contact the Clarity core or extend via Clarity∞ Constitution & Agent Mesh.
+Clarity is a precision-tuned assistant engineered to eliminate confusion and deliver clean, verified answers with evidence boundaries and auditability.
 
+## Project Rule
+
+Repository root -> project root -> current task -> evidence -> inference -> Echo -> K or HOLD.
+
+Project files may extend the root but may not silently contradict it.
