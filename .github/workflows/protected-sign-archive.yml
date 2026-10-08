@@ -1,0 +1,53 @@
+name: Protected signed archive attestation
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: signed-archive-main-pub
+  cancel-in-progress: false
+jobs:
+  sign:
+    if: github.ref == 'refs/heads/main.pub'
+    runs-on: ubuntu-latest
+    environment: signing
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main.pub
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify archive and produce signed attestation
+        env:
+          SIGNING_SSH_PRIVATE_KEY: ${{ secrets.SIGNING_SSH_PRIVATE_KEY }}
+          SIGNING_NAME: ${{ vars.SIGNING_NAME }}
+          SIGNING_EMAIL: ${{ vars.SIGNING_EMAIL }}
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${SIGNING_SSH_PRIVATE_KEY:-}" || { echo "HOLD: missing protected signing key"; exit 1; }
+          test -n "${SIGNING_NAME:-}" && test -n "${SIGNING_EMAIL:-}" || { echo "HOLD: missing signing identity"; exit 1; }
+          test "$(git branch --show-current)" = "main.pub"
+          original=4ea64c8bb41608582fbc88f412763791b4cdcbdd
+          archived=bc3ba0a9bed8da4c3190e9cec9156674c105847e
+          git cat-file -e "$original^{commit}"
+          git cat-file -e "$archived^{commit}"
+          grep -Fq "$original" archive/receipts/CLARITY_INFOFAQS_PRIORITY_RECEIPT_2026-10-08.md
+          umask 077
+          keyfile="$(mktemp)"
+          trap 'rm -f "$keyfile"' EXIT
+          printf '%s\n' "$SIGNING_SSH_PRIVATE_KEY" > "$keyfile"
+          chmod 600 "$keyfile"
+          ssh-keygen -y -f "$keyfile" > /dev/null
+          git config user.name "$SIGNING_NAME"
+          git config user.email "$SIGNING_EMAIL"
+          git config gpg.format ssh
+          git config user.signingkey "$keyfile"
+          git config commit.gpgsign true
+          git -c core.hooksPath=/dev/null commit --allow-empty -S -m "Scramble Scramble: signed archive receipt attestation for $original"
+          signed_sha="$(git rev-parse HEAD)"
+          git cat-file -p "$signed_sha" | grep -q '^gpgsig '
+          git -c http.extraheader="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)" push origin HEAD:refs/heads/main.pub
+          echo "SIGNED_COMMIT_SHA=$signed_sha" >> "$GITHUB_STEP_SUMMARY"
+          echo "Signing attempted and pushed. GitHub Verified badge and independent Echo must be checked separately." >> "$GITHUB_STEP_SUMMARY"
