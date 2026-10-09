@@ -1,0 +1,43 @@
+# Prompt-by-Prompt Verified Commit Policy
+
+Policy date: 2026-10-09
+Status: ADOPTED AS A USER-REQUESTED WORKFLOW PREFERENCE
+Scope: Verified, public-safe research and workflow artifacts in the appropriate connected repository.
+
+## Directive
+
+After each user prompt, attempt the following *during the same response* when a relevant public-safe artifact or meaningful repository change exists:
+
+1. INPUT — Interpret and scope the requested work.
+2. PROCESS — Produce the work without changing immutable source artifacts.
+3. VERIFY — Inspect exact available source bytes, hashes, chronology, tests, and relevant independent evidence. Identify gaps.
+4. COMMIT — Persist verified, public-safe, meaningful changes to the appropriate GitHub repository using one forward branch per repository.
+5. RECEIPT — Return the actual repository, branch, changed paths, commit SHA/URL, and verification limits.
+6. HOLD — When evidence, permission, tools, or required content are missing, make no unsupported assertion of success. Label the blocked action HOLD.
+
+## Integrity and safety invariants
+
+- Never modify the user's original REIK/TCGE 0-U-1 kernel as part of checkpointing.
+- Preserve provenance, chronology, independent validation, falsification records, and uncertainty as distinct concepts.
+- Preserve the eight FIDELITY principles: Identity, Provenance, Chronology, Independence, Method/Object Separation, Non-Expansion, Falsification Persistence, and Uncertainty.
+- Carry verified public state only; unresolved U is not promoted into evidence (DROP U). HOLD is a gate for unverified actions, not a claim that the repository's previous checkpoint was changed.
+- Never commit credentials, private keys, wallet secrets, personally sensitive records, unpublished private conversations, or material without publishing authorization.
+- Do not fabricate external executions, payments, signature validations, deliveries, proof certificates, checksums, or test results.
+- Do not manufacture meaningless empty commits merely to meet a cadence; report NO CHANGE when there is no commit-worthy material.
+- Record SHA-256 digests only for exact bytes actually available and hashed. Historical user-provided digests are references until independently checked.
+- Honor existing evidence boundaries and avoid rewriting or overwriting unrelated files.
+
+## Execution boundary
+
+This is a conversational operating procedure, **not** an installed webhook, GitHub Action, background monitor, or guarantee of a commit for every message. GitHub writes require access to available tools during a response. The assistant must report failures and unavailable evidence clearly. A GitHub commit demonstrates only that files were recorded in Git history; it does not establish that scientific claims, independent proofs, blockchain transactions, or outside actions occurred.
+
+## Receipt format
+
+- Repository and branch
+- Changed files
+- Exact commit SHA and verified GitHub URL
+- Source-byte checks and SHA-256 hashes where actually performed
+- Independent tests and unresolved limitations
+- Outcome: COMMITTED / NO CHANGE / HOLD
+
+This file contains the public-safe workflow rules only, not the full conversation or any secrets.
