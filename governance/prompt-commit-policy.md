@@ -41,3 +41,13 @@ This is a conversational operating procedure, **not** an installed webhook, GitH
 - Outcome: COMMITTED / NO CHANGE / HOLD
 
 This file contains the public-safe workflow rules only, not the full conversation or any secrets.
+
+## Standing research-response presentation preference (2026-10-09)
+
+For subsequent REIK/TCGE, Clarity Pi Math, hash-ledger, and closely related research or workflow requests, display the following where relevant and supported:
+1. **Hash structure**: a compact provenance lineage with exact available reference hashes; explicitly label each value as `source-byte SHA-256 independently rehashed`, `historical/user-reported SHA-256`, `Git commit SHA`, or `Git blob SHA`. Never equate these types or imply that merely linking references proves their chronology.
+2. **Continue control**: provide an actionable Continue button in ChatGPT when supported, issuing a self-contained resume prompt that preserves the existing kernel and evidence/HOLD rules. If that UI is unavailable, supply the same copyable prompt.
+3. **Research paper**: link the latest appropriate versioned research paper and state which claims are established, which are hypotheses, and which remain on HOLD.
+4. **Ledger receipt**: when a meaningful public-safe change is made, commit it in the relevant connected GitHub repository during the same turn and return exact paths, commit identifiers, read-back verification, and limitations. When no meaningful change exists, clearly state NO CHANGE; do not fabricate a commit.
+
+This is a **user-requested standing output preference**, not a mechanism for programmatically modifying ChatGPT Memory, an automatically running job, or an on-chain/blockchain write. A public GitHub repository is the requested durable **research ledger** for public-safe records. Continue to enforce private-material limits, eight FIDELITY principles, 0 HOLD for unsupported claims, and DROP U as an evidence-admission gate. Leave the original REIK/TCGE 0-U-1 kernel unchanged. A future conversation must read the ledger to recover its full contents and cannot rely on a guaranteed automatically loaded memory.
