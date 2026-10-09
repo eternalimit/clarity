@@ -1,0 +1,148 @@
+name: Clarity Handoff Protected Signing
+on:
+  workflow_dispatch:
+    inputs:
+      target_sha:
+        description: Exact epoch 380008 handoff commit
+        required: true
+        default: '449eaa95ab60f40bc5cb0b52fd6810f8a71ba201'
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: clarity-handoff-protected-signing
+  cancel-in-progress: false
+jobs:
+  sign:
+    if: github.ref == 'refs/heads/vent' && github.repository == 'eternalimit/clarity'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: gethub-signing
+    permissions:
+      contents: write
+    outputs:
+      receipt_sha: ${{ steps.sign.outputs.receipt_sha }}
+      receipt_branch: ${{ steps.sign.outputs.receipt_branch }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Check identity, sign receipt commit, publish archive branch
+        id: sign
+        shell: bash
+        env:
+          TARGET_SHA: ${{ inputs.target_sha }}
+          SIGNING_KEY: ${{ secrets.GETHUB_GPG_PRIVATE_KEY }}
+          SIGNING_PASSPHRASE: ${{ secrets.GETHUB_GPG_PASSPHRASE }}
+          SIGNING_FINGERPRINT: ${{ vars.GETHUB_GPG_FINGERPRINT }}
+          SIGNING_EMAIL: ${{ vars.GETHUB_SIGNING_EMAIL }}
+          PROTECTION_CONFIRMED: ${{ vars.GETHUB_SIGNING_PROTECTION_CONFIRMED }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          umask 077
+          [[ "$TARGET_SHA" == "449eaa95ab60f40bc5cb0b52fd6810f8a71ba201" ]]
+          [[ "$SIGNING_FINGERPRINT" =~ ^[0-9A-F]{40}$ ]]
+          [[ -n "$SIGNING_KEY" && -n "$SIGNING_EMAIL" ]]
+          [[ "$PROTECTION_CONFIRMED" == "clarity-vent-380008-v1" ]]
+          [[ "$SIGNING_EMAIL" != *$'\n'* ]]
+          git cat-file -e "$TARGET_SHA^{commit}"
+          git merge-base --is-ancestor "$TARGET_SHA" HEAD
+          export GNUPGHOME
+          GNUPGHOME="$(mktemp -d "$RUNNER_TEMP/gethub-gpg.XXXXXX")"
+          cleanup() {
+            gpgconf --kill gpg-agent || true
+            rm -rf "$GNUPGHOME" "$RUNNER_TEMP/gethub-gpg-wrapper"
+          }
+          trap cleanup EXIT
+          printf '%s' "$SIGNING_KEY" | gpg --batch --quiet --import
+          unset SIGNING_KEY
+          actual="$(gpg --batch --with-colons --list-secret-keys | awk -F: '$1=="fpr" {print $10; exit}')"
+          [[ "$actual" == "$SIGNING_FINGERPRINT" ]]
+          # The passphrase goes to GPG through stdin, never command-line arguments.
+          cat > "$RUNNER_TEMP/gethub-gpg-wrapper" <<'WRAPPER'
+          #!/bin/bash
+          set -euo pipefail
+          printf '%s\n' "$SIGNING_PASSPHRASE" | gpg --batch --pinentry-mode loopback --passphrase-fd 0 "$@"
+          WRAPPER
+          chmod 700 "$RUNNER_TEMP/gethub-gpg-wrapper"
+          git config user.name "Richard Stein"
+          git config user.email "$SIGNING_EMAIL"
+          git config gpg.format openpgp
+          git config gpg.program "$RUNNER_TEMP/gethub-gpg-wrapper"
+          git config user.signingkey "$SIGNING_FINGERPRINT"
+          git config commit.gpgsign true
+          git checkout --detach "$TARGET_SHA"
+          receipt_branch="gethub-signed-receipt/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+          receipt_path="records/signing/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT.json"
+          mkdir -p records/signing
+          source_digest="$(git cat-file commit "$TARGET_SHA" | sha256sum | cut -d ' ' -f 1)"
+          jq -n --arg source "$TARGET_SHA" --arg digest "$source_digest" \
+            --arg fingerprint "$SIGNING_FINGERPRINT" --arg repository "$GITHUB_REPOSITORY" \
+            --arg workflow "$GITHUB_WORKFLOW_REF" --arg workflow_sha "$GITHUB_WORKFLOW_SHA" \
+            --arg run "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
+            --arg attempt "$GITHUB_RUN_ATTEMPT" --arg actor "$GITHUB_ACTOR" \
+            '{schema:"gethub-signing-receipt-v1",repository:$repository,source_commit:$source,
+              source_commit_bytes_sha256:$digest,signing_primary_fingerprint:$fingerprint,
+              workflow_ref:$workflow,workflow_sha:$workflow_sha,run_url:$run,
+              run_attempt:$attempt,actor:$actor,signature_verification:"PENDING",
+              claim_validation:"HOLD",scope:"signature and exact source commit binding"}' > "$receipt_path"
+          git add -- "$receipt_path"
+          git commit -S -m "Scramble Scramble: signed source binding receipt $TARGET_SHA"
+          git -c gpg.program=gpg verify-commit HEAD
+          receipt_sha="$(git rev-parse HEAD)"
+          # Short-lived Actions token; no credentials persisted in the checkout.
+          auth="$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+          echo "::add-mask::$auth"
+          git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $auth" \
+            push origin "HEAD:refs/heads/$receipt_branch"
+          echo "receipt_sha=$receipt_sha" >> "$GITHUB_OUTPUT"
+          echo "receipt_branch=$receipt_branch" >> "$GITHUB_OUTPUT"
+          echo "Signed receipt: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$receipt_sha" >> "$GITHUB_STEP_SUMMARY"
+  verify:
+    needs: sign
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: gethub-signing-public
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ needs.sign.outputs.receipt_sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify on a separate runner with public trust material only
+        shell: bash
+        env:
+          PUBLIC_KEY: ${{ vars.GETHUB_GPG_PUBLIC_KEY }}
+          FINGERPRINT: ${{ vars.GETHUB_GPG_FINGERPRINT }}
+          TARGET_SHA: ${{ inputs.target_sha }}
+          RECEIPT_SHA: ${{ needs.sign.outputs.receipt_sha }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          [[ "$FINGERPRINT" =~ ^[0-9A-F]{40}$ ]]
+          [[ -n "$PUBLIC_KEY" ]]
+          export GNUPGHOME
+          GNUPGHOME="$(mktemp -d "$RUNNER_TEMP/gethub-public.XXXXXX")"
+          trap 'rm -rf "$GNUPGHOME"' EXIT
+          printf '%s' "$PUBLIC_KEY" | gpg --batch --quiet --import
+          actual="$(gpg --batch --with-colons --list-keys | awk -F: '$1=="fpr" {print $10; exit}')"
+          [[ "$actual" == "$FINGERPRINT" ]]
+          git verify-commit --raw "$RECEIPT_SHA" 2> "$RUNNER_TEMP/signature-status"
+          awk -v expected="$FINGERPRINT" '$2=="VALIDSIG" && ($3==expected || $NF==expected) {found=1} END {exit !found}' "$RUNNER_TEMP/signature-status"
+          [[ "$(git rev-parse HEAD^)" == "$TARGET_SHA" ]]
+          receipt="records/signing/$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT.json"
+          digest="$(git cat-file commit "$TARGET_SHA" | sha256sum | cut -d ' ' -f 1)"
+          jq -e --arg source "$TARGET_SHA" --arg digest "$digest" --arg fpr "$FINGERPRINT" \
+            '.source_commit==$source and .source_commit_bytes_sha256==$digest and .signing_primary_fingerprint==$fpr' "$receipt"
+          gh api "repos/$GITHUB_REPOSITORY/commits/$RECEIPT_SHA" > "$RUNNER_TEMP/github-receipt.json"
+          jq -e '.commit.verification.verified==true and .commit.verification.reason=="valid"' "$RUNNER_TEMP/github-receipt.json"
+          {
+            echo "Signature and source binding: PASS"
+            echo "GitHub signature verification: PASS"
+            echo "Claim validation: HOLD; signing does not validate product-priority claims."
+            echo "Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          } >> "$GITHUB_STEP_SUMMARY"
