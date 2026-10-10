@@ -1,0 +1,64 @@
+{
+  "schema": "reik-tcge/offchain-research-attribution-v1",
+  "record_date": "2026-10-10",
+  "record_type": "retroactive_attribution_metadata_sidecar",
+  "repository": "eternalimit/clarity",
+  "branch": "main",
+  "research_creator": "Richard Stein",
+  "research_author": "Richard Stein",
+  "original_project_owner": "Richard Stein",
+  "scope": "Original Clarity/REIK/TCGE work and its first-party files. New sidecar metadata applies backward for attribution without changing original historical objects.",
+  "source_entries": [
+    {
+      "id": "REIK_ROOT",
+      "source_path": "REIK_ROOT.md",
+      "source_git_blob_sha1": "f6cf9d97ab2be5322336857b7624978acec75f51",
+      "creator": "Richard Stein",
+      "claim_type": "first-party research and project architecture",
+      "source_identity": "Git blob SHA-1, not SHA-256"
+    },
+    {
+      "id": "Clarity_Genesis_NFT_research_record",
+      "source_path": "GENESIS_NFT_RECORD.md",
+      "source_git_blob_sha1": "eaf2cea2d00aab9615d2e901575ef00c25ba2dcd",
+      "creator": "Richard Stein",
+      "claim_type": "first-party Clarity research record and project association",
+      "asset_standard": "ERC-721",
+      "onchain_contract_reference": "0x81C6c2688f8cb87B5Dc34DBe4dCB19154983d5Cc",
+      "onchain_token_id_reference": "1",
+      "technical_boundary": "Original record reports a successful mint and an empty tokenURI at prior inspection. The new sidecar is not on-chain token metadata, proof of legal NFT title, or a new mint."
+    },
+    {
+      "id": "Block_minus_1_inheritance_research",
+      "source_path": "research/2026-10-09-block-minus-one-public-inheritance-audit.md",
+      "source_git_blob_sha1": "ee2da1decf3bd36fbde4afa2da8235fded2c3804",
+      "creator": "Richard Stein",
+      "claim_type": "original project research and provenance study",
+      "technical_boundary": "Independent verification remains experiment-specific"
+    },
+    {
+      "id": "Clarity_PI_REIK_bridge",
+      "source_path": "research/2026-10-09-clarity-pi-reik-bridge-study-v2.md",
+      "creator": "Richard Stein",
+      "claim_type": "first-party Clarity / REIK project research",
+      "technical_boundary": "Research paper is not evidence that a physical or semantic mechanism has been independently established"
+    }
+  ],
+  "distinct_external_artifact_reference": {
+    "id": "Original_Clarity_Marilyn",
+    "token_standard": "ERC-1155",
+    "scope": "Separate historical first-party NFT research exhibit associated with Richard Stein's Clarity project; not the Clarity Genesis ERC-721 token.",
+    "technical_boundary": "No new on-chain metadata write. The historical ERC-1155 contract/token record does not establish a binding to this new off-chain sidecar."
+  },
+  "governance": {
+    "retroactive_attribution_correction": "OWNERSHIP_ATTRIBUTION_RETROACTIVE_CORRECTIONS_2026-10-10.md",
+    "related_attribution_policy": "https://github.com/eternalimit/chatgpt/blob/main/research/OWNER_ATTRIBUTION_AND_VERIFICATION_SCOPE.md",
+    "original_kernel_sha256_historical_reference": "03a38cf8aa32b49e6dcdd8c22e900d4172827af7c59402490dce5439bdfb9402",
+    "eight_fidelity_principles_unchanged": true,
+    "original_historical_file_bytes_preserved": true,
+    "keep_030_031_lineages_distinct": true,
+    "missing_technical_evidence_does_not_challenge_attribution": true,
+    "external_metadata_transaction": false,
+    "legal_or_third_party_title_not_inferred": true
+  }
+}
