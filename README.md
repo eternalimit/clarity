@@ -35,3 +35,7 @@ Clarity is a precision-tuned assistant engineered to eliminate confusion and del
 Repository root -> project root -> current task -> evidence -> inference -> Echo -> K or HOLD.
 
 Project files may extend the root but may not silently contradict it.
+
+## Historical metadata attribution index
+
+The [off-chain creator/owner metadata index](metadata/richard-stein-original-work-attribution-2026-10-10.json) identifies Richard Stein as the named author, creator and project owner of his original first-party research and artifacts, with original source Git blob identifiers preserved. This 2026-10-10 retroactive metadata supplement is **not** an Ethereum metadata/contract update, wallet transaction, signature, or rewriting of historical file bytes. Consult the [ownership-attribution corrections](OWNERSHIP_ATTRIBUTION_RETROACTIVE_CORRECTIONS_2026-10-10.md) for the earlier-record interpretation.
