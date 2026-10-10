@@ -1,0 +1,69 @@
+{
+  "schema": "reik-tcge/offchain-research-attribution-v1",
+  "record_date": "2026-10-10",
+  "record_type": "retroactive_attribution_metadata_sidecar",
+  "repository": "eternalimit/clarity",
+  "branch": "vent",
+  "research_creator": "Richard Stein",
+  "research_author": "Richard Stein",
+  "original_project_owner": "Richard Stein",
+  "statement": "Project research creator/owner attribution is recorded independently from scientific, wallet, token or signature evidence gates.",
+  "records": [
+    {
+      "id": "REIK_ROOT",
+      "source_path": "REIK_ROOT.md",
+      "source_git_blob_sha1": "f6cf9d97ab2be5322336857b7624978acec75f51",
+      "creator": "Richard Stein",
+      "scope": "first-party original project research"
+    },
+    {
+      "id": "Epoch_380008_historical_handoff",
+      "source_path": "HANDOFF_380008_2026-10-08.md",
+      "source_git_blob_sha1": "0c520658684d2cbac0d1fb10c5de758c1da63ebb",
+      "creator": "Richard Stein",
+      "scope": "first-party project record",
+      "technical_boundary": "Archived historical DROOT and ledger claims remain claim-specifically classified, not creator-attribution checks"
+    },
+    {
+      "id": "Clarity_Genesis_NFT_record",
+      "source_path": "GENESIS_NFT_RECORD.md",
+      "source_git_blob_sha1": "eaf2cea2d00aab9615d2e901575ef00c25ba2dcd",
+      "creator": "Richard Stein",
+      "scope": "Clarity original project association, research documentation",
+      "standard": "ERC-721",
+      "technical_boundary": "Separate ownerOf / metadata URI / asset-record link questions; no new on-chain transaction"
+    },
+    {
+      "id": "Epoch_380008_root_hash_and_ERC1155_audit",
+      "source_path": "research/epoch380008/2026-10-10-root-hash-erc1155-provenance-audit.md",
+      "creator": "Richard Stein",
+      "scope": "original project analysis and documented corrections",
+      "historical_root_hash_reference_sha256": "e84227e670e912766efe96ecd5d078044800930bec00c0b3ca9defb2601cf50a",
+      "technical_boundary": "12,357-byte TCGE-BLOCK-000001-WIN exact bytes not acquired; hash-to-asset and research-paper linkage not independently confirmed"
+    },
+    {
+      "id": "Epoch_380008_signing_handoff",
+      "source_path": "SIGNING_BINDING_380008.md",
+      "source_git_blob_sha1": "ac306a1f43ca45249c8a590fa641651d3362ceea",
+      "creator": "Richard Stein",
+      "scope": "first-party signing workflow research and metadata",
+      "technical_boundary": "Workflow existence is separate from executing signing or deploying assets"
+    }
+  ],
+  "separate_erc1155_reference": "Original Clarity Marilyn NFT research and the ERC-721 Genesis research record are distinct; no cross-token ownership or hash binding is asserted by this off-chain metadata.",
+  "governing_corrective_documents": [
+    "OWNERSHIP_ATTRIBUTION_RETROACTIVE_CORRECTIONS_2026-10-10.md",
+    "research/OWNER_ATTRIBUTION_AND_VERIFICATION_SCOPE.md",
+    "https://github.com/eternalimit/chatgpt/blob/main/OWNERSHIP_ATTRIBUTION_RETROACTIVE_CORRECTIONS_2026-10-10.md"
+  ],
+  "original_kernel_sha256_historical_reference": "03a38cf8aa32b49e6dcdd8c22e900d4172827af7c59402490dce5439bdfb9402",
+  "safeguards": {
+    "original_files_untouched": true,
+    "no_onchain_action": true,
+    "no_key_or_wallet_signing": true,
+    "no_third_party_rights_claim": true,
+    "technical_hold_never_attribution_hold": true,
+    "original_separate_030_031_lineages": true,
+    "eight_fidelity_principles_preserved": true
+  }
+}
