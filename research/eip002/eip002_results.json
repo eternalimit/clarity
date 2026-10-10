@@ -1,0 +1,50 @@
+{
+  "authenticated_positive_trials": 0,
+  "cases": 256,
+  "classifications": {
+    "recomputed_forgery": {
+      "hash_only_admit": 64,
+      "local_pass": 64,
+      "n": 64,
+      "strict_hold": 64,
+      "strict_invalid": 0,
+      "strict_verified": 0
+    },
+    "same_height_fork": {
+      "hash_only_admit": 64,
+      "local_pass": 64,
+      "n": 64,
+      "strict_hold": 64,
+      "strict_invalid": 0,
+      "strict_verified": 0
+    },
+    "stale_hash_mutation": {
+      "hash_only_admit": 0,
+      "local_pass": 0,
+      "n": 64,
+      "strict_hold": 0,
+      "strict_invalid": 64,
+      "strict_verified": 0
+    },
+    "synthetic_baseline": {
+      "hash_only_admit": 64,
+      "local_pass": 64,
+      "n": 64,
+      "strict_hold": 64,
+      "strict_invalid": 0,
+      "strict_verified": 0
+    }
+  },
+  "date": "2026-10-10",
+  "experiment": "EIP-002",
+  "externally_authenticated_witnesses": 0,
+  "independent_echo": "NOT OBTAINED",
+  "original_kernel_modified": false,
+  "precommitted_design": "64 samples per category (256 trials)",
+  "scope": "synthetic negative-control gate only; NO real witnessed test or original kernel rehash",
+  "state": "0 HOLD; DROP U",
+  "target_64_of_64_external_witnessed_positive": "NOT TESTABLE",
+  "unauthenticated_witness_claims_promoted": 0,
+  "unsafe_hash_only_false_admission_on_synthetic_attack_fixtures": 128,
+  "verified_knowledge_from_these_trials": 0
+}
