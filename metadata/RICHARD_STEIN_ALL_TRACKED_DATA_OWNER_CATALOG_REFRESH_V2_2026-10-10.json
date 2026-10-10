@@ -1,0 +1,423 @@
+{
+  "schema": "reik-tcge/repository-owner-catalog/v2",
+  "dated": "2026-10-10",
+  "owner": "Richard Stein",
+  "project_owner": "Richard Stein",
+  "data_owner": "Richard Stein",
+  "research_originator": "Richard Stein",
+  "research_author": "Richard Stein",
+  "scope": "Project stewardship and attribution for every tracked path in the pinned source commit; does not assert original authorship of every external dependency or transfer third-party title.",
+  "repo": "eternalimit/clarity",
+  "branch": "vent",
+  "source_commit_sha": "1ef23773506641d1ad0bf3b371f58f76d2e7f6a0",
+  "source_tree_git_sha1": "19ef1dba5c17fd8846c686d42777bff2651e5ece",
+  "original_kernel_sha256_reference": "03a38cf8aa32b49e6dcdd8c22e900d4172827af7c59402490dce5439bdfb9402",
+  "previous_catalog_commit": "66e6fc7bc9f192abe27a18044341cbe000301d41",
+  "previous_catalog_git_blob_sha1": "d40ffd550d0077ec4c2bd86b60c1d4b15ae598f8",
+  "correction": "v1 field source_tree_sha1 held branch commit SHA, not true tree object; v2 separates both identities.",
+  "newly_tracked_paths": [
+    "metadata/RICHARD_STEIN_ALL_TRACKED_DATA_OWNER_CATALOG_2026-10-10.json"
+  ],
+  "changed_paths": [
+    "README.md"
+  ],
+  "deleted_paths": [],
+  "original_files_untouched": true,
+  "branch_not_merged": true,
+  "licensing_unchanged": true,
+  "preserved_conditions": [
+    "FIDELITY 8 principles",
+    "independent Echo",
+    "Experiment 030/031 separate",
+    "DROP U",
+    "technical claim-specific 0 HOLD"
+  ],
+  "number_of_files": 55,
+  "files": [
+    {
+      "path": ".github/copilot-instructions.md",
+      "git_blob_sha1": "a6621912783a87e347c56e2dec032c84eacbd426",
+      "bytes": 478,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": ".github/workflows/bitcoin-miner-control.yml",
+      "git_blob_sha1": "3d587a902e989839945d2c463e5fa5839859a348",
+      "bytes": 1233,
+      "kind": "structured-data",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": ".github/workflows/clarity-handoff-protected-signing.yml",
+      "git_blob_sha1": "2046b696b9083c7a318f6c711b7ed65e47c7efb9",
+      "bytes": 7611,
+      "kind": "structured-data",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "abstract.html",
+      "git_blob_sha1": "771e6f97a3266b5af728b4e7fc44e7033623cb89",
+      "bytes": 842,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "bitcoin-miner/ANCHOIN_MINER.md",
+      "git_blob_sha1": "b04dde01c0db432edf806820728c5e8374be4f15",
+      "bytes": 1586,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "bitcoin-miner/check_evidence.py",
+      "git_blob_sha1": "a0c9013f562e59515242149447f13e3d27188538",
+      "bytes": 967,
+      "kind": "source-code",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "bitcoin-miner/CLONE.md",
+      "git_blob_sha1": "cab1962baf55c7d8c50f0ab0301c8be0c95b6c51",
+      "bytes": 1119,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "bitcoin-miner/connection.env.example",
+      "git_blob_sha1": "52f29f281e7e47607c471cb70dcbd4920f5d6779",
+      "bytes": 765,
+      "kind": "other",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "bitcoin-miner/controller.py",
+      "git_blob_sha1": "2606c8f90d25df0f2040a41f0877e70d94fd611e",
+      "bytes": 2763,
+      "kind": "source-code",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "bitcoin-miner/GETHUB_RUN_380008.md",
+      "git_blob_sha1": "9bbe62496337f3fd6970d501763040ed55484517",
+      "bytes": 533,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "bitcoin-miner/index.html",
+      "git_blob_sha1": "5ff571883d89ee8efd8c72506c00f4d66ca15990",
+      "bytes": 2428,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "bitcoin-miner/miner.example.json",
+      "git_blob_sha1": "01ee0e43306396a655f524b1986aeac2614046b8",
+      "bytes": 198,
+      "kind": "structured-data",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "bitcoin-miner/mock_asic.py",
+      "git_blob_sha1": "d9527a0a8fe06f0a73e9d8576230232e89b675a2",
+      "bytes": 1440,
+      "kind": "source-code",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "bitcoin-miner/PHYSICAL_CONNECT.md",
+      "git_blob_sha1": "063892f413f0717f580667ea4fa4d735097c6564",
+      "bytes": 2064,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "bitcoin-miner/physical_preflight.py",
+      "git_blob_sha1": "d928bd211449f1ab4bd6bb78d62fff01a4fda448",
+      "bytes": 1227,
+      "kind": "source-code",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "bitcoin-miner/README.md",
+      "git_blob_sha1": "03cbcda5f39ccdb26bf53f0b687f1020d8eb51c5",
+      "bytes": 1875,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "bitcoin-miner/status.json",
+      "git_blob_sha1": "5c88830cd777cdaf7775c539f8517d2c50227112",
+      "bytes": 270,
+      "kind": "structured-data",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "bitcoin-miner/verify_receipt.py",
+      "git_blob_sha1": "c95a6169c0291262d8b727d7880b44131323ac58",
+      "bytes": 1779,
+      "kind": "source-code",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "clarity_logo_circle.png",
+      "git_blob_sha1": "84f7c4019611169cc245706039d3317de5716981",
+      "bytes": 1078988,
+      "kind": "image",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "clarity_logo_full.png",
+      "git_blob_sha1": "8564b0f5e2cecb953b220bc280f6184eddfe4723",
+      "bytes": 814044,
+      "kind": "image",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "clarityos_whitepaper.html",
+      "git_blob_sha1": "cb9c4da39fd9b9ff8f2defb65e295207954510c6",
+      "bytes": 3880,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "echo_mining_dashboard.html",
+      "git_blob_sha1": "e1d5dfdb19e6efd4771c79e5f794f2d05fd77260",
+      "bytes": 5261,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "future_work.html",
+      "git_blob_sha1": "c9987dec0c765aa7ee1134d23ea062327c6f2fe8",
+      "bytes": 573,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "GENESIS_NFT_RECORD.md",
+      "git_blob_sha1": "eaf2cea2d00aab9615d2e901575ef00c25ba2dcd",
+      "bytes": 3803,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "HANDOFF_380008_2026-10-08.md",
+      "git_blob_sha1": "0c520658684d2cbac0d1fb10c5de758c1da63ebb",
+      "bytes": 2633,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "index.html",
+      "git_blob_sha1": "30ebd4b9150c910c222639425caf2452a093b03e",
+      "bytes": 2018,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "infofaqs_system.html",
+      "git_blob_sha1": "ea4570af06af00be7f9c1df4259bf0a13f2f0556",
+      "bytes": 613,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "legal_compliance.html",
+      "git_blob_sha1": "63216ed2a07cf3f82cc0fb30af88c50859de0cfa",
+      "bytes": 501,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "LICENSE",
+      "git_blob_sha1": "f38a7e02aad11e34727982ca344db255b770d4d4",
+      "bytes": 1068,
+      "kind": "other",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "metadata/RICHARD_STEIN_ALL_TRACKED_DATA_OWNER_CATALOG_2026-10-10.json",
+      "git_blob_sha1": "d40ffd550d0077ec4c2bd86b60c1d4b15ae598f8",
+      "bytes": 13498,
+      "kind": "structured-data",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "metadata/richard-stein-original-work-attribution-2026-10-10.json",
+      "git_blob_sha1": "823fc8cda26aec06dc9635842fcf4654cfcbf442",
+      "bytes": 3443,
+      "kind": "structured-data",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "OWNERSHIP_ATTRIBUTION_RETROACTIVE_CORRECTIONS_2026-10-10.md",
+      "git_blob_sha1": "aebc56474a4730f5adb08f06be897a52d52beffe",
+      "bytes": 3867,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "PROJECT_START.md",
+      "git_blob_sha1": "5dcc153934431ce76869f4e81e28713a3ea3f874",
+      "bytes": 706,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "project-logs/EXECUTION_LOG_VERIFY_380008.md",
+      "git_blob_sha1": "e5c67f46208b362d8b59fa29478267709cc9da05",
+      "bytes": 2595,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "project-logs/SPIDER_MONKEY_BUS_WEB_NET_HOOKS.md",
+      "git_blob_sha1": "5c9d9523ce46c6aa3596b4c04fd0b1e3bbefbe89",
+      "bytes": 1176,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "README.md",
+      "git_blob_sha1": "e647ddf58cc031432b0f7fb3c2977dafced940da",
+      "bytes": 3343,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "records/2026-10-09-epoch380008-cross-repo-dependency-audit.md",
+      "git_blob_sha1": "b035debfebeaeebfe4a553fdd62b1bf3463ee3b1",
+      "bytes": 5596,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "records/2026-10-09-epoch380008-fd3-reproducible-review.md",
+      "git_blob_sha1": "2163962947fd1fd1f513ff8d1ed34ef9293682f7",
+      "bytes": 11213,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "records/2026-10-09-epoch380008-fd3-synthetic-validation-and-dispatch-audit.md",
+      "git_blob_sha1": "50be1b3d0bdf9bb86828dedc9fdd30c125eb9a44",
+      "bytes": 13093,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "records/2026-10-09-epoch380008-signing-readiness-static-audit.md",
+      "git_blob_sha1": "af2a2780ab4a1541d6eb48ed64dfaddc5b0763e3",
+      "bytes": 11764,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "records/2026-10-10-metadata-v2-recovery-audit-receipt.md",
+      "git_blob_sha1": "09fd17ea39905ec6963e3d40c3d2a3eef917e2f7",
+      "bytes": 5425,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "REIK_ROOT.md",
+      "git_blob_sha1": "f6cf9d97ab2be5322336857b7624978acec75f51",
+      "bytes": 2022,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "research/epoch380008/2026-10-10-original-metadata-erc1155-droot-working-paper-v2.md",
+      "git_blob_sha1": "10b18aaddd589e9e3139f284f565882b78897d63",
+      "bytes": 11340,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "research/epoch380008/2026-10-10-root-hash-erc1155-provenance-audit.md",
+      "git_blob_sha1": "75f7c620fc257637b716ee28d59d671dfb5fcc17",
+      "bytes": 6743,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "research/epoch380008/review-only-gpg-wrapper-fd3.patch",
+      "git_blob_sha1": "abce2175157416ef15ac0d5df1fa92f5be0a5ea5",
+      "bytes": 987,
+      "kind": "other",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "research/epoch380008/test_fd3_mock_signing.py",
+      "git_blob_sha1": "47ea06f51319604da504ee71dc678411a680ef4a",
+      "bytes": 7775,
+      "kind": "source-code",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "research/epoch380008/test-results.json",
+      "git_blob_sha1": "264027ea02798d16cab6376a99edda48f7c5b387",
+      "bytes": 2535,
+      "kind": "structured-data",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "research/OWNER_ATTRIBUTION_AND_VERIFICATION_SCOPE.md",
+      "git_blob_sha1": "5f2c22d389a38b8334b709a86c77c4c80f375a75",
+      "bytes": 3446,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "run_all_8.sh",
+      "git_blob_sha1": "c0de6a0c04f048e081ee7058d024c9a65a4d1b7d",
+      "bytes": 991,
+      "kind": "source-code",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "run_clone.sh",
+      "git_blob_sha1": "59f3e50f8764e90d44ea1b995a3fa037427d93b7",
+      "bytes": 436,
+      "kind": "source-code",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "security_ethics.html",
+      "git_blob_sha1": "dde118550e6986d89c503c3a470a455210f49b51",
+      "bytes": 642,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "SIGNING_BINDING_380008.md",
+      "git_blob_sha1": "ac306a1f43ca45249c8a590fa641651d3362ceea",
+      "bytes": 2751,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "symbolic_chain_engines.html",
+      "git_blob_sha1": "d7d16a868ab5181e90084edae6e9d663d6c98b47",
+      "bytes": 722,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "system_architecture.html",
+      "git_blob_sha1": "5474bfb895c7a751c12ce9bffc3d1bef9c08f5fe",
+      "bytes": 1219,
+      "kind": "document",
+      "owner": "Richard Stein"
+    },
+    {
+      "path": "use_cases.html",
+      "git_blob_sha1": "55fd65d58c242957f1854e3bcc8cf674fd53c6d8",
+      "bytes": 554,
+      "kind": "document",
+      "owner": "Richard Stein"
+    }
+  ]
+}
