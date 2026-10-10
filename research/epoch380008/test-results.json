@@ -1,0 +1,87 @@
+{
+  "assertions": [
+    {
+      "assertion": "shell syntax: old_wrapper.sh",
+      "passed": true
+    },
+    {
+      "assertion": "shell syntax: review_only_fd3_wrapper.sh",
+      "passed": true
+    },
+    {
+      "assertion": "shell syntax: reference_passthrough_wrapper.sh",
+      "passed": true
+    },
+    {
+      "assertion": "regression reproduced: old FD0 is passphrase",
+      "passed": true
+    },
+    {
+      "assertion": "regression reproduced: old FD0 loses Git commit payload",
+      "passed": true
+    },
+    {
+      "assertion": "repair: FD0 contains original Git message",
+      "passed": true
+    },
+    {
+      "assertion": "repair: FD0 includes Git commit object header fields",
+      "passed": true
+    },
+    {
+      "assertion": "repair: FD0 is byte-identical to direct Git-to-GPG baseline",
+      "passed": true
+    },
+    {
+      "assertion": "repair: FD3 carries synthetic passphrase only",
+      "passed": true
+    },
+    {
+      "assertion": "repair: FD0 excludes synthetic passphrase",
+      "passed": true
+    },
+    {
+      "assertion": "repair: passphrase is not a command-line argument",
+      "passed": true
+    },
+    {
+      "assertion": "repair: passphrase env removed from mock-GPG child",
+      "passed": true
+    },
+    {
+      "assertion": "repair: mock received FD3 selection",
+      "passed": true
+    },
+    {
+      "assertion": "all mock executions intentionally fail signing",
+      "passed": true
+    },
+    {
+      "assertion": "no new Git commit created",
+      "passed": true
+    },
+    {
+      "assertion": "local test repository has no Git remotes",
+      "passed": true
+    },
+    {
+      "assertion": "empty passphrase blocked before mock program executes",
+      "passed": true
+    },
+    {
+      "assertion": "empty-passphrase failure does not alter HEAD",
+      "passed": true
+    }
+  ],
+  "bash_version": "GNU bash, version 5.2.37(1)-release (x86_64-pc-linux-gnu)",
+  "fd3_channel_sha256": "e4b8bd402239803635a6f0450dc21f3110b94f6c92af11f1823e4c1a6528e52d",
+  "fd3_repaired_stdin_sha256": "8f1259683fc93bcf8f7ab7fc32c5b1c6779737cf77c47c1b3196952c597f3645",
+  "git_version": "git version 2.47.3",
+  "old_stdin_sha256": "e4b8bd402239803635a6f0450dc21f3110b94f6c92af11f1823e4c1a6528e52d",
+  "passed_count": 18,
+  "reference_stdin_sha256": "8f1259683fc93bcf8f7ab7fc32c5b1c6779737cf77c47c1b3196952c597f3645",
+  "schema": "REIK-EPOCH380008-FD3-MOCK-TEST-v2",
+  "state": "0 HOLD",
+  "test_kind": "isolated synthetic Git-to-mock-GPG interface; NO real signatures",
+  "total_count": 18
+}

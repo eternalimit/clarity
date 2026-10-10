@@ -1,0 +1,17 @@
+diff --git a/.github/workflows/clarity-handoff-protected-signing.yml b/.github/workflows/clarity-handoff-protected-signing.yml
+--- a/.github/workflows/clarity-handoff-protected-signing.yml
++++ b/.github/workflows/clarity-handoff-protected-signing.yml
+@@ -63,8 +63,11 @@ jobs:
+-          # The passphrase goes to GPG through stdin, never command-line arguments.
++          # Preserve Git's signing message on FD0; use FD3 for the passphrase.
+           cat > "$RUNNER_TEMP/gethub-gpg-wrapper" <<'WRAPPER'
+           #!/bin/bash
+           set -euo pipefail
+-          printf '%s\n' "$SIGNING_PASSPHRASE" | gpg --batch --pinentry-mode loopback --passphrase-fd 0 "$@"
++          [[ -n "${SIGNING_PASSPHRASE:-}" ]]
++          exec 3<<<"$SIGNING_PASSPHRASE"
++          unset SIGNING_PASSPHRASE
++          exec gpg --batch --pinentry-mode loopback --passphrase-fd 3 "$@"
+           WRAPPER
+           chmod 700 "$RUNNER_TEMP/gethub-gpg-wrapper"
+           git config user.name "Richard Stein"
