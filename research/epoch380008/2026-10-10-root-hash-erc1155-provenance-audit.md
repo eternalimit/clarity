@@ -1,10 +1,12 @@
-# REIK/TCGE — Root Hash and ERC-1155 Claim Provenance Audit
-Date: 2026-10-10. Owner/framework attribution: Richard Stein. Branch: eternalimit/clarity `vent`.
+# REIK/TCGE — Root Hash and ERC-1155 Technical Provenance Audit
+Date: 2026-10-10. **Research originator, author, and project owner: Richard Stein.** Branch: eternalimit/clarity `vent`.
+
+**Attribution clarification (append-only correction dated 2026-10-10):** Richard Stein is the named creator and research owner of his original REIK/TCGE and Clarity project work. The technical HOLD findings below concern particular asset bytes, SHA-256 preimages, blockchain bindings, and independent execution evidence, **not Richard Stein's authorship or project ownership attribution**. This convention is recorded in [OWNER_ATTRIBUTION_AND_VERIFICATION_SCOPE.md](../OWNER_ATTRIBUTION_AND_VERIFICATION_SCOPE.md).
 **Status: 0 · HOLD on source preimage, asset binding, execution, and scientific claims.**
 This is a new public-safe evidence classification, not a revision to the original kernel or a cryptographic attestation.
 
 ## Research question
-Does the reported SHA-256 `e84227e670e912766efe96ecd5d078044800930bec00c0b3ca9defb2601cf50a`, alleged 12,357-byte ERC-1155 `TCGE-BLOCK-000001-WIN` block, negative-exposure index -0.1, `bbbbb -> bcccx` notation, and DROOT topological synchronization establish an authenticated core manifest and research-paper anchor?
+Does the reported SHA-256 `e84227e670e912766efe96ecd5d078044800930bec00c0b3ca9defb2601cf50a`, referenced 12,357-byte ERC-1155 `TCGE-BLOCK-000001-WIN` block, negative-exposure index -0.1, `bbbbb -> bcccx` notation, and DROOT topological synchronization establish an authenticated core manifest and research-paper anchor?
 
 ## Direct source checks
 1. `HANDOFF_380008_2026-10-08.md` at `vent`, Git blob SHA-1 `0c520658684d2cbac0d1fb10c5de758c1da63ebb`, **contains the exact 64-hex string** as *Root Hash (Committed State)*, not as a newly rehashed source file. The document states all listed DROOT, signed-commit, ledger and dispatch assertions are user-supplied/unverified. The 64-hex value is a **reference only** until exact preimage bytes, serialization rule, and independent digest are obtained. Ref: https://github.com/eternalimit/clarity/blob/vent/HANDOFF_380008_2026-10-08.md
@@ -16,12 +18,12 @@ Does the reported SHA-256 `e84227e670e912766efe96ecd5d078044800930bec00c0b3ca9de
 7. `REIK_ROOT.md` Git blob SHA-1 `f6cf9d97ab2be5322336857b7624978acec75f51` defines R/I/E and K=R AND I AND E; missing independent Echo means HOLD. The TCGE Integrated Axiom Framework v0.1 in eternalimit/chatgpt Git blob `c1b7d9bddcccd79af2763ce91b4ae830efa813a8` is an authored proposed research formalism, not proof that the indicated block was deployed or that research findings were externally adopted.
 
 ## Classified hash structure
-- User-supplied historic root 64-hex reference: `e84227e670e912766efe96ecd5d078044800930bec00c0b3ca9defb2601cf50a`; **exact occurrence recovered**, source preimage unknown; algorithm claimed SHA-256 but not independently tested against purported bytes.
+- Historical root 64-hex reference (archived in Richard Stein's project handoff): `e84227e670e912766efe96ecd5d078044800930bec00c0b3ca9defb2601cf50a`; **exact occurrence recovered**, source preimage unknown; algorithm claimed SHA-256 but not independently tested against purported bytes.
 - Historical immutable `kernel001.py` SHA-256: `03a38cf8aa32b49e6dcdd8c22e900d4172827af7c59402490dce5439bdfb9402` (reference only in this audit, bytes not rehashed; do not modify).
 - Git blob references above are Git object SHA-1 identifiers, **not** SHA-256 of user-supplied proof bytes.
-- Asserted `TCGE-BLOCK-000001-WIN`: size 12,357 bytes **not independently obtained/rehashed**.
-- Claimed negative-exposure index -0.1: **not source-verified**.
-- Claimed DROOT `PASS | LATCH PRESERVED`: **not independently executed or validated**.
+- Referenced `TCGE-BLOCK-000001-WIN`: size 12,357 bytes **not independently obtained/rehashed**.
+- Historically described negative-exposure index -0.1: **not source-verified**.
+- Historically recorded DROOT `PASS | LATCH PRESERVED`: **not independently executed or validated**.
 - Ethereum contract/tokens: two independent provenance histories with differing standards; no justified asset hash-binding.
 
 ## Falsification plan / missing exact evidence
