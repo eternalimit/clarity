@@ -1,0 +1,30 @@
+{
+  "classification_counts": {
+    "ADMITTED": 3,
+    "HOLD": 46,
+    "REFUTED": 15
+  },
+  "exact_pi_self_normalization": "1",
+  "experiment_029_receipts_replayed": false,
+  "historical_manifests_rehashed": false,
+  "independent_REIK_scientific_Echo": false,
+  "kernel_source_bytes_rehashed": false,
+  "negative_controls": {
+    "admissible_falsifier": true,
+    "false_pi_equation_rejected": true,
+    "falsifier_not_admissible": true,
+    "no_echo_report": true,
+    "no_independent_echo": true,
+    "normalization_loses_identity": true,
+    "positive_negative_conflict": true,
+    "tampered_receipt_detected": true,
+    "zero_denominator_rejected": true
+  },
+  "negative_controls_passed": 9,
+  "oracle_agreement": "64/64",
+  "python_version": "3.13.5",
+  "research_status": "bounded_formal_overlay_not_canonical_kernel",
+  "symbolic_counterexample_to_proved_obligations": "UNSAT (sympy.satisfiable == False)",
+  "sympy_version": "1.14.0",
+  "tested_boolean_assignments": 64
+}
