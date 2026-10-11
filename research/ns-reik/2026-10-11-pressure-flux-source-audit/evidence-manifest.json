@@ -1,0 +1,70 @@
+{
+  "timestamp_utc": "2026-10-11T22:33:18Z",
+  "status": "bounded new source-level verification; external Echo 0 HOLD",
+  "source_bytes": [
+    {
+      "type": "connector-decoded UTF-8 text, not independently downloaded original",
+      "repo": "openai/NavierStokesAndEuler",
+      "ref": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "path": "NavierStokes/R3/PressureFlux.lean",
+      "utf8_bytes": 34598,
+      "sha256": "0adffc7879e8e5e226e5d4b2d721139a4ff12a04b4c9b4ebc12cf0d0f597fc2a",
+      "git_blob_sha1": "542377decf40306a50ce2170783de99a384b8d41"
+    },
+    {
+      "type": "pinned Git blob SHA-1; SHA-256 not computed",
+      "path": "NavierStokes/R3/WholeSpaceUniqueness.lean",
+      "git_blob_sha1": "ad83465eedc6b723fb01d10603453234cf7f84b4"
+    },
+    {
+      "type": "selected theorem excerpt of decoded UTF-8 text, not independent original",
+      "path": "NavierStokes/R3/PressureFlux.lean",
+      "lines": "576-599",
+      "sha256": "44d436411dd91d4ce5650ac9aeba4d44b8543bc35cd678ae16a190f5de41a886"
+    }
+  ],
+  "historical_protected_kernel": {
+    "path": "kernel001.py",
+    "bytes_reported": 4299,
+    "sha256_reported": "03a38cf8aa32b49e6dcdd8c22e900d4172827af7c59402490dce5439bdfb9402",
+    "rehashed_this_run": false
+  },
+  "historical_lineages_separate": {
+    "028_A": "974cc9e3aa6ff657811c4a658fbeb92ce73e49eb05125a27ca85fdc91cfcb5ab",
+    "028_B": "ddaa40a2f4370de6440f4e761614a99e3b5caaa3d0f6a23a89d4cd0ed686067c",
+    "029_ZIP": "4f773d940dba2f97328c8be360a6cc8293ceb28e25017113a14c9c4ff138cdbd",
+    "030_280_ZIP": "b6019822134374d88a86a3eb01570e5a223bc4f37a2e5a999cbd7901000ad8ed",
+    "030_282_ZIP": "228532a88eb450311ad55ae40401fc1014599a12ffaead9e1d3bac0914a94942",
+    "031_290_ZIP": "43e33376f7bbb46fcc4be22f6da71ba1a441240b92e0e45ab0e634b339bd4cce",
+    "031_294_A_ZIP": "969d9a1f1590dc368e55f5fc42201cc784cd23099331cc8b22bd7b9ce94ce62a",
+    "031_294_B_ZIP": "50b131ece121135360d4ab943b828878bd9859e6ff804adf2ebcfccb0e871bff",
+    "SAT_039_ZIP": "30dff2086d73d0bb7ed7a8ccb69247537e399f145b3c3725191d04efae33cfe7",
+    "SAT_040_ZIP": "90af324307094dba28840e777cf2946911f136e57b882e62bab1cd0c2b44e3ba",
+    "SAT_041_ZIP": "1aef71ce5e6f10568be265b461d764424757b1324306a3c170dce564d3ccbbc9",
+    "SAT_041_manifest": "3cf24a038c79f163ffe2d762cc2a206ce2e0f84d465027a3bfd1d7fa6fbd19d0",
+    "SAT_041_receipt_tip": "0fff744fb073717fbd7a3c181bdaf494456f4693a6a8bfbf19361ab3e56374a6",
+    "NS_002_manifest": "3fe2a14fe0c8c9e1aaf4b96a9daced69dce238a225289b8783db5d2947d6ffdc",
+    "NS_005_ZIP": "d9c2352a4b86ca8b44e283f62bfb57c3b84e7700ec7b0d08d58e76f4fa658e52",
+    "NS_005_manifest": "429dc706fd78a6043f9a22c10850c15d850b9bcfe10514cf82f5bf4a1f2bb8c4",
+    "NS_005_tip": "5b8b1cfff4dadc8a023663d59d66a8fd20d7d9c280b412df6d7a2fb5b79271b4"
+  },
+  "unresolved": [
+    "Original manuscript PDF raw bytes",
+    "External independent Echo",
+    "September 23 CPU/GPU source bytes and trace",
+    "Published original-byte 256-active UNSAT plus accepted proof",
+    "Dedicated solver and checker executable identity",
+    "Independent original-key custody and signed timestamp",
+    "Original kernel bytes inaccessible this run"
+  ],
+  "synthetic_prior_reported": [
+    "semantic 048 38/38",
+    "semantic 049 46/46",
+    "HCL-001 40/40",
+    "HCL-002 53/53"
+  ],
+  "git_heads_before": {
+    "eternalimit/clarity": "857a34e1fdea0dc956967223b1c9c87a0fb81f3a",
+    "eternalimit/chatgpt": "b6df02f98495bbef387ac897d6918bca125591c6"
+  }
+}
