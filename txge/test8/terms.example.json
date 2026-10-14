@@ -1,0 +1,8 @@
+{
+  "offer_id": "TXGE-TEST8-2026-10-14",
+  "network": "main",
+  "reference_valuation_sats": 312500000,
+  "payment_sats": 312500000,
+  "recipient_address": "REPLACE_WITH_AGREED_BITCOIN_MAINNET_ADDRESS",
+  "mr100_signing_address": "REPLACE_WITH_MR100_PUBLIC_P2PKH_ADDRESS"
+}
