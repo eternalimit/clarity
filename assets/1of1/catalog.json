@@ -1,0 +1,49 @@
+{
+  "title": "1of1 Marketplace",
+  "canonical_url": "https://infofaqs.com/1of1-marketplace.html",
+  "seller_collection": "Jacob Stein Collection",
+  "products": [
+    {
+      "id": "solar-boiled-gourd",
+      "title": "Solar-Boiled Gourd",
+      "sku": "GOURD-001",
+      "series_number": 1,
+      "element": "Solar Fire",
+      "image": "assets/1of1/solar-boiled-gourd.webp",
+      "qr_image": "assets/1of1/solar-boiled-gourd-qr.png",
+      "marketplace_url": "https://infofaqs.com/1of1-marketplace.html#solar-boiled-gourd",
+      "upc": null,
+      "upc_status": "Assigned retail UPC required",
+      "facebook_listing_url": null,
+      "listing_copy": "Solar-Boiled Gourd \u2014 The Gourd Collection\nAI-assisted fantasy pumpkin art by Richard Stein. Jacob Stein Collection. Design 01 of 03. Price, format, edition quantity, delivery and usage terms to be confirmed with seller before listing. \u00a9 2026 Richard Stein. All Rights Reserved."
+    },
+    {
+      "id": "redwood-guardian",
+      "title": "Redwood Guardian",
+      "sku": "GOURD-002",
+      "series_number": 2,
+      "element": "Ancient Earth",
+      "image": "assets/1of1/redwood-guardian.webp",
+      "qr_image": "assets/1of1/redwood-guardian-qr.png",
+      "marketplace_url": "https://infofaqs.com/1of1-marketplace.html#redwood-guardian",
+      "upc": null,
+      "upc_status": "Assigned retail UPC required",
+      "facebook_listing_url": null,
+      "listing_copy": "Redwood Guardian \u2014 The Gourd Collection\nAI-assisted fantasy pumpkin art by Richard Stein. Jacob Stein Collection. Design 02 of 03. Price, format, edition quantity, delivery and usage terms to be confirmed with seller before listing. \u00a9 2026 Richard Stein. All Rights Reserved."
+    },
+    {
+      "id": "moonlit-harvest",
+      "title": "Moonlit Harvest",
+      "sku": "GOURD-003",
+      "series_number": 3,
+      "element": "Lunar Light",
+      "image": "assets/1of1/moonlit-harvest.webp",
+      "qr_image": "assets/1of1/moonlit-harvest-qr.png",
+      "marketplace_url": "https://infofaqs.com/1of1-marketplace.html#moonlit-harvest",
+      "upc": null,
+      "upc_status": "Assigned retail UPC required",
+      "facebook_listing_url": null,
+      "listing_copy": "Moonlit Harvest \u2014 The Gourd Collection\nAI-assisted fantasy pumpkin art by Richard Stein. Jacob Stein Collection. Design 03 of 03. Price, format, edition quantity, delivery and usage terms to be confirmed with seller before listing. \u00a9 2026 Richard Stein. All Rights Reserved."
+    }
+  ]
+}
