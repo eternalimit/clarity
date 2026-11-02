@@ -1,0 +1,111 @@
+{
+  "decision": {
+    "archive_success_implies_dns_success": false,
+    "precedence": [
+      "UNKNOWN -> HOLD",
+      "Observed mismatch -> HOLD",
+      "All required scope checks verified -> PASS"
+    ],
+    "unknown_is_success": false
+  },
+  "edition_0": {
+    "modify_original_bytes": false,
+    "publish_original_artwork": false,
+    "status": "HOLD"
+  },
+  "edition_labels": "Operational stages defined for this package; not claims of prior edition canon.",
+  "editions": [
+    {
+      "edition": "1",
+      "name": "Public plan",
+      "output": "This deterministic JSON and embedded read-only verifier",
+      "state": "PREPARED"
+    },
+    {
+      "action": "Run embedded verifier; collect DNS and trusted HTTPS observations",
+      "edition": "2",
+      "name": "Observe",
+      "state": "NOT_RUN"
+    },
+    {
+      "action": "Ensure Pages custom domain is configured first, then apply only reviewed website record differences through the verified provider API",
+      "edition": "3",
+      "name": "Repair",
+      "requires": [
+        "Verified GitHub Pages hosting",
+        "Verified authoritative DNS provider",
+        "Authenticated scoped DNS write access",
+        "Backup of existing DNS records"
+      ],
+      "state": "HOLD"
+    },
+    {
+      "action": "Report PASS only for checks supported by recorded evidence",
+      "edition": "4",
+      "name": "Verify",
+      "requires": [
+        "Provider read-back matches intended changes",
+        "Authoritative DNS agrees",
+        "Trusted TLS for apex and www",
+        "Expected HTTPS redirects and homepage responses"
+      ],
+      "state": "NOT_RUN"
+    },
+    {
+      "action": "Record actual commit IDs, SHA-256 and fetch-back equality separately from operational health",
+      "edition": "echo",
+      "name": "Archive and fetch back",
+      "state": "PENDING"
+    }
+  ],
+  "github_pages_target": {
+    "apex_A": [
+      "185.199.108.153",
+      "185.199.109.153",
+      "185.199.110.153",
+      "185.199.111.153"
+    ],
+    "conditional_on_verified_hosting": true,
+    "optional_apex_AAAA": [
+      "2606:50c0:8000::153",
+      "2606:50c0:8001::153",
+      "2606:50c0:8002::153",
+      "2606:50c0:8003::153"
+    ],
+    "www_CNAME": "eternalimit.github.io"
+  },
+  "initial_receipt": {
+    "certificate_repaired": false,
+    "dns_changed": false,
+    "overall_status": "HOLD"
+  },
+  "inputs": {
+    "dns_credentials_reference": "UNKNOWN",
+    "dns_provider": "UNKNOWN",
+    "domain": "infofaqs.com",
+    "hosting_provider": "UNKNOWN",
+    "hosting_repository": "eternalimit/infofaqs-home",
+    "www_domain": "www.infofaqs.com"
+  },
+  "preserve": [
+    "Email records",
+    "Verification records",
+    "Unrelated DNS records",
+    "Valid GitHub IPv6 records",
+    "Existing repository files",
+    "Edition 0 original artwork"
+  ],
+  "project": "MASTER.ORIGIN",
+  "rights_notice": "© 2026 Richard Stein. All Rights Reserved.",
+  "runtime": {
+    "language": "Python 3 standard library",
+    "network_write_operations": false,
+    "python_source": "import json, ssl, socket, urllib.request, urllib.parse, sys\nfrom concurrent.futures import ThreadPoolExecutor\nEXPECTED={\"185.199.108.153\",\"185.199.109.153\",\"185.199.110.153\",\"185.199.111.153\"}\ndef dns(name, kind):\n    url=\"https://dns.google/resolve?\"+urllib.parse.urlencode({\"name\":name,\"type\":kind})\n    with urllib.request.urlopen(url, timeout=12) as response:\n        data=json.load(response)\n    if data.get(\"Status\") != 0: raise ValueError(\"DNS resolver status \"+str(data.get(\"Status\")))\n    return sorted({a[\"data\"].rstrip(\".\").lower() for a in data.get(\"Answer\",[]) if a.get(\"type\")==kind})\ndef https(host):\n    with socket.create_connection((host,443), timeout=12) as connection:\n        with ssl.create_default_context().wrap_socket(connection,server_hostname=host) as tls:\n            cert=tls.getpeercert()\n    with urllib.request.urlopen(\"https://\"+host+\"/\",timeout=12) as response:\n        return {\"certificate_trusted\":True,\"expires\":cert.get(\"notAfter\"),\"http_status\":response.status,\"final_url\":response.url}\ndef check(name,fn):\n    try: return name,{\"state\":\"OBSERVED\",\"value\":fn()}\n    except Exception as error: return name,{\"state\":\"UNKNOWN\",\"error\":type(error).__name__+\": \"+str(error)}\njobs=[(\"apex_a\",lambda:dns(\"infofaqs.com\",1)),(\"www_cname\",lambda:dns(\"www.infofaqs.com\",5)),(\"apex_https\",lambda:https(\"infofaqs.com\")),(\"www_https\",lambda:https(\"www.infofaqs.com\"))]\nwith ThreadPoolExecutor(max_workers=4) as pool:\n    results=dict(pool.map(lambda job:check(*job),jobs))\nknown=all(v[\"state\"]==\"OBSERVED\" for v in results.values())\nmatched=known and set(results[\"apex_a\"][\"value\"])==EXPECTED and results[\"www_cname\"][\"value\"]==[\"eternalimit.github.io\"] and all(results[k][\"value\"][\"http_status\"]==200 and results[k][\"value\"][\"final_url\"]==\"https://infofaqs.com/\" for k in (\"apex_https\",\"www_https\"))\nprint(json.dumps({\"status\":\"PASS\" if matched else \"HOLD\",\"scope\":\"Public resolver IPv4/CNAME and HTTPS homepage checks only; not a DNS repair or full release approval\",\"results\":results},indent=2,sort_keys=True))\nsys.exit(0 if matched else 2)\n",
+    "run_command": "python3 -c 'import json,sys; exec(compile(json.load(open(sys.argv[1]))[\"runtime\"][\"python_source\"],\"verifier\",\"exec\"))' master-origin/infofaqs-dns-plan-v1.json"
+  },
+  "schema_version": "1.0.0",
+  "sources": [
+    "https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site"
+  ],
+  "title": "InfoFAQs DNS recovery — Editions 1–4 and Echo"
+}
