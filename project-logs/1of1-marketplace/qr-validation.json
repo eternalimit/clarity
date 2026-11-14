@@ -1,0 +1,20 @@
+[
+  {
+    "sku": "GOURD-001",
+    "qr_decode": "PASS",
+    "decoded_url": "https://infofaqs.com/1of1-marketplace.html#solar-boiled-gourd",
+    "destination_live": "NOT VERIFIED"
+  },
+  {
+    "sku": "GOURD-002",
+    "qr_decode": "PASS",
+    "decoded_url": "https://infofaqs.com/1of1-marketplace.html#redwood-guardian",
+    "destination_live": "NOT VERIFIED"
+  },
+  {
+    "sku": "GOURD-003",
+    "qr_decode": "PASS",
+    "decoded_url": "https://infofaqs.com/1of1-marketplace.html#moonlit-harvest",
+    "destination_live": "NOT VERIFIED"
+  }
+]
